@@ -12,14 +12,13 @@ public class CardsPanel extends JPanel{
 	ImageIcon[] icons;
 	ImageIcon cardBack = new ImageIcon(this.getClass().getResource("cardLogo.jpg"));
 	ImageIcon temp;
-	public static int score = 0;
+	int score = 0;
 	Random random;
 	Timer timer;
 	
 	int openImages;
 	int currentIndex;
 	int oddClickIndex;
-	int numClicks;
 	
 	CardsPanel() {
 		
@@ -117,8 +116,11 @@ public class CardsPanel extends JPanel{
 						buttons[currentIndex].setEnabled(false);
 						buttons[oddClickIndex].setEnabled(false);
 						score++;
-						if(score == 8) {
-							//winning message to be set up...
+						ScorePanel.scoreLabel.setText(String.valueOf(score));
+						
+						if(score == pics.length) {
+							GameFrame.winText.setText("Congrats it took you " + openImages/2 + " tries <3");
+							GameFrame.winText.setVisible(true);
 						}
 					}
 				}
